@@ -1,0 +1,22 @@
+.usa-nav {
+	padding: 0px 0 1rem 0.5rem !important;
+}
+
+.usa-button--big{
+	height: 120px;
+}
+
+.header-image img{
+	height: 40px;
+}
+
+.usa-logo {
+	display:flex;
+	width:100%;
+	align-items:center;
+	justify-content:center;
+}
+
+.usa-breadcrumb{
+	font-size: 24px;
+}

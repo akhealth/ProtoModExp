@@ -1,0 +1,43 @@
+.usa-nav {
+	padding: 0px 0 1rem 0.5rem !important;
+}
+
+.usa-button--big{
+	height: 120px;
+}
+
+.usa-link {
+	font-size: 24px;
+}
+
+.header-image img{
+	height: 40px;
+	width: 40px;
+	max-width:none;
+}
+
+.usa-logo {
+	display:flex;
+	align-items:center;
+	margin-bottom: 0.8rem;
+}
+
+.usa-breadcrumb{
+	font-size: 24px;
+}
+
+p {
+	font-size: 48px;
+}
+
+.clientdetails{
+	font-size: 24px;
+}
+
+.address{
+	font-size: 30px;
+}
+
+input .p{
+	
+}

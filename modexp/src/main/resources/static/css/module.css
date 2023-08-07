@@ -1,0 +1,61 @@
+.usa-nav {
+	padding: 0px 0 1rem 0.5rem !important;
+}
+
+.usa-button--big{
+	height: 120px;
+	width: 100%;
+	margin-right:0;
+}
+
+.usa-link {
+	font-size: 16px;
+}
+
+.header-image img{
+	height: 40px;
+	width: 40px;
+	max-width:none;
+}
+
+.usa-logo {
+	display:flex;
+	align-items:center;
+	margin-bottom: 0.8rem;
+}
+
+.usa-breadcrumb {
+	font-size: 24px;
+}
+
+.modulepage {
+	padding: 2rem 2rem 4rem 2rem;
+	
+}
+.usa-section {
+	padding: 0 0 0 0;
+	margin-bottom: 0.5rem;
+}
+
+.font-heading-lg {
+	margin-top: 0rem;
+	margin-bottom: 1rem;
+}
+
+.grid-row.grid-gap {
+	margin-left:0;
+	margin-right:0;
+
+}
+.module-section {
+	background-color: white;
+	border-style:solid;
+	border-width:1px;
+	border-color:Lightgray;
+	height: 230px;
+	padding: 10px 0px 10px 0px;
+}
+
+.usa-list{
+	margin: 0 0 0 0;
+}
