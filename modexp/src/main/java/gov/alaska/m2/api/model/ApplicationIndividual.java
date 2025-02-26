@@ -10,87 +10,84 @@ import jakarta.persistence.*;
 @Table(name = "ar_app_indv")
 public class ApplicationIndividual {
 
-		@JsonIgnore
-		@EmbeddedId
-		private ApplicationIndividualKey id;
-		
-		@JsonIgnore
-		@ManyToOne
-		@MapsId("indv_id")
-		@JoinColumn(name ="indv_id")
-		private Person person;
-		
-		@JsonIgnore
-		@ManyToOne
-		@MapsId("app_num")
-		@JoinColumn(name ="app_num")
-		private Application application;
-		
-		@Column(name = "head_of_household_sw")
-		private char headOfHousehold;
-		
-		// need a default constructor for JPA magic to work
-		private ApplicationIndividual() {}
-		
-		public ApplicationIndividual(Person person, Application application) {
-			this.person = person;
-			this.application = application;
-			this.headOfHousehold = 'N';
-			this.id = new ApplicationIndividualKey(application.getAppNum(), person.getAries_id());
-		}
+	@JsonIgnore
+	@EmbeddedId
+	private ApplicationIndividualKey id;
 
-		public ApplicationIndividualKey getId() {
-			return id;
-		}
+	@JsonIgnore
+	@ManyToOne
+	@MapsId("indv_id")
+	@JoinColumn(name = "indv_id")
+	private Person person;
 
-		public void setId(ApplicationIndividualKey id) {
-			this.id = id;
-		}
+	@JsonIgnore
+	@ManyToOne
+	@MapsId("app_num")
+	@JoinColumn(name = "app_num")
+	private Application application;
 
-		public Person getPerson() {
-			return person;
-		}
+	@Column(name = "head_of_household_sw")
+	private char headOfHousehold;
 
-		public void setPerson(Person person) {
-			this.person = person;
-		}
+	// need a default constructor for JPA magic to work
+	@SuppressWarnings("unused")
+	private ApplicationIndividual() {
+	}
 
-		public Application getApplication() {
-			return application;
-		}
+	public ApplicationIndividual(Person person, Application application) {
+		this.person = person;
+		this.application = application;
+		this.headOfHousehold = 'N';
+		this.id = new ApplicationIndividualKey(application.getAppNum(), person.getAries_id());
+	}
 
-		public void setApplication(Application application) {
-			this.application = application;
-		}
+	public ApplicationIndividualKey getId() {
+		return id;
+	}
 
-		public char getHeadOfHousehold() {
-			return headOfHousehold;
-		}
+	public void setId(ApplicationIndividualKey id) {
+		this.id = id;
+	}
 
-		public void setHeadOfHousehold(char headOfHousehold) {
-			this.headOfHousehold = headOfHousehold;
-		}
+	public Person getPerson() {
+		return person;
+	}
 
-		@Override
-		public int hashCode() {
-			return Objects.hash(application, person);
-		}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			ApplicationIndividual other = (ApplicationIndividual) obj;
-			return Objects.equals(application, other.application) && Objects.equals(person, other.person);
-		}
+	public Application getApplication() {
+		return application;
+	}
 
-		
-	
+	public void setApplication(Application application) {
+		this.application = application;
+	}
+
+	public char getHeadOfHousehold() {
+		return headOfHousehold;
+	}
+
+	public void setHeadOfHousehold(char headOfHousehold) {
+		this.headOfHousehold = headOfHousehold;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(application, person);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ApplicationIndividual other = (ApplicationIndividual) obj;
+		return Objects.equals(application, other.application) && Objects.equals(person, other.person);
+	}
+
 }
-
-
-

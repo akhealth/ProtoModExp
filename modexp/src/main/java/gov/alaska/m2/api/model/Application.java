@@ -12,32 +12,28 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
-@Table(name= "ar_application_for_aid")
+@Table(name = "ar_application_for_aid")
 public class Application {
 
 	@Id
 	@GenericGenerator(name = "app_num", strategy = "gov.alaska.m2.api.model.ApplicationIDGenerator")
-	@GeneratedValue(generator = "app_num")  
+	@GeneratedValue(generator = "app_num")
 	private String appNum;
 
-	@Column(name="app_recvd_dt")
+	@Column(name = "app_recvd_dt")
 	private Date receivedDate;
-	
-	@Column(name="application_status_cd")
+
+	@Column(name = "application_status_cd")
 	private String appStatusCode;
-	
+
 	@JsonIgnore
-	@OneToMany(
-			mappedBy = "application", 
-			cascade = CascadeType.ALL, 
-			orphanRemoval = true, 
-			fetch = FetchType.LAZY )
+	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<ApplicationIndividual> people = new ArrayList<ApplicationIndividual>();
-	
-	public Application() {}
-	
+
+	public Application() {
+	}
+
 	public List<ApplicationIndividual> getPeople() {
 		return people;
 	}
@@ -61,28 +57,28 @@ public class Application {
 	public String getAppNum() {
 		return appNum;
 	}
-	
+
 	public void setAppNum(String appNum) {
 		this.appNum = appNum;
 	}
-	
+
 	public Person getHeadOfHousehold() {
 		Person hoh = null;
 		for (ApplicationIndividual person : people) {
 			if (person.getHeadOfHousehold() == 'Y')
 				hoh = person.getPerson();
 		}
-		return hoh;		
+		return hoh;
 	}
-	
+
 	public void addPersonToApplication(Person person) {
 		ApplicationIndividual newMap = new ApplicationIndividual(person, this);
 		people.add(newMap);
 		person.getApplications().add(newMap);
 	}
-	
-	public void removePersonFromApplication(Person person) { 
-		for(Iterator<ApplicationIndividual> iterator = people.iterator(); iterator.hasNext();) {
+
+	public void removePersonFromApplication(Person person) {
+		for (Iterator<ApplicationIndividual> iterator = people.iterator(); iterator.hasNext();) {
 			ApplicationIndividual map = iterator.next();
 			if (map.getApplication().equals(this) && map.getPerson().equals(person)) {
 				iterator.remove();
@@ -92,7 +88,7 @@ public class Application {
 			}
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(appNum, appStatusCode);
@@ -110,8 +106,4 @@ public class Application {
 		return Objects.equals(appNum, other.appNum) && Objects.equals(appStatusCode, other.appStatusCode);
 	}
 
-
-	
-	
-	
 }

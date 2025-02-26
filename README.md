@@ -15,32 +15,33 @@ Prototype goals:
 
 ## Getting Started
 
-This prototype was developed using Eclipse and Spring Tool Suite 4 
+This prototype was developed using VS Code and Spring Boot Tools
 
-- [Install Spring Tool Suite 4](https://spring.io/tools).
+- [Install Spring Boot Tools](https://spring.io/tools)
 
-Additionally, we reccomend Podman or Docker be installed on your system.
+Additionally, we recommend Podman or Docker be installed on your system.
 
 - [Install Podman](https://podman.io/getting-started/installation)
 
 ### Building the Project using Podman
 
-This project contains Dockerfiles and a PowerShell script to stand up the application, a simplified PostgreSQL db, and a PGAdmin instance.
+This project contains Dockerfiles and a `compose.yaml` file to stand up the application, a simplified PostgreSQL db, and a PGAdmin instance.
 
-Running the script will build the container images and run them in a pod. 
+Copy the example `.env` file and build and run the application using the compose command. 
 
 ```
-> podman-compose.ps1 build
-> podman-compose.ps1 up
+> cp .env.example .env
+> podman compose build
+> podman compose up
 ```
 
-After running the podman script to build and run the application, you should be able to access services on the following URLS with the default configuration:
+After running compose to build and run the application, you should be able to access services on the following URLS with the default configuration:
 
 | Service             | Address                       |
 | :------------------ | :---------------------------- |
-| ModExp Login Page   | http://localhost:8080/        |
-| API                 | http://localhost:8080/api     |
-| API Documentation   | http://localhost:8080/swagger |
+| ModExp Login Page   | http://localhost:8081/        |
+| API                 | http://localhost:8081/api     |
+| API Documentation   | http://localhost:8081/swagger |
 | PGAdmin Login       | http://localhost:9876
 
 Sample data and users are available:
@@ -55,7 +56,7 @@ Sample data and users are available:
 When finished, the pod can be taken down and containers removed.
 
 ```
-> podman-compose.ps1 down
+> podman compose down
 ```
 
 ## Contributing

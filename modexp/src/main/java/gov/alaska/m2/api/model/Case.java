@@ -1,23 +1,22 @@
 package gov.alaska.m2.api.model;
 
 import jakarta.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name="dc_cases")
+@Table(name = "dc_cases")
 public class Case {
 
 	@Id
-	@Column(name="case_num")
+	@Column(name = "case_num")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long caseNum;
-	
-	@Column(name="case_status_cd")
+
+	@Column(name = "case_status_cd")
 	private String caseStatusCode;
-	
-	@Column(name="case_mode_cd")
+
+	@Column(name = "case_mode_cd")
 	private String caseModeCode;
-	
+
 	public String getCaseStatusCode() {
 		return caseStatusCode;
 	}
@@ -38,5 +37,8 @@ public class Case {
 		return caseNum;
 	}
 
+	public void setCaseNum(Long caseNum) {
+		this.caseNum = caseNum;
+	}
 
 }

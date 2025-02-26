@@ -10,34 +10,33 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name= "dc_indv")
+@Table(name = "dc_indv")
 public class Person {
-	
+
 	@Id
-	@Column(name ="indv_id")
+	@Column(name = "indv_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long aries_id;
-	
+
 	@Column(name = "ssn")
 	private String ssn;
-	
+
 	@Column(name = "first_name")
 	private String first_name;
-	
+
 	@Column(name = "last_name")
 	private String last_name;
-	
+
 	@Column(name = "dob_dt")
 	private Date dob;
-	
+
 	@JsonIgnore
-	@OneToMany(
-			mappedBy = "person", 
-			fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
 	private List<ApplicationIndividual> applications = new ArrayList<ApplicationIndividual>();
-	
-	public Person() {}
-	
+
+	public Person() {
+	}
+
 	public List<ApplicationIndividual> getApplications() {
 		return applications;
 	}
@@ -84,7 +83,7 @@ public class Person {
 	public long getAries_id() {
 		return aries_id;
 	}
-	
+
 	public void setAries_id(long ariesId) {
 		this.aries_id = ariesId;
 	}
@@ -105,7 +104,5 @@ public class Person {
 		Person other = (Person) obj;
 		return aries_id == other.aries_id && Objects.equals(ssn, other.ssn);
 	}
-	
-	
-	
+
 }

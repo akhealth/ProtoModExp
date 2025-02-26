@@ -8,44 +8,45 @@ import jakarta.persistence.*;
 // ID class to represent the composite key needed for applications and person mapping.
 @Embeddable
 public class ApplicationIndividualKey implements Serializable {
-	
-	// Name needs to match the fields in the mapping class. 
-	//Type needs to match ID of the associated type.
-	
+
+	// Name needs to match the fields in the mapping class.
+	// Type needs to match ID of the associated type.
+
 	@Column(name = "app_num")
-	private String application;
-	
+	private String app_num;
+
 	@Column(name = "indv_id")
-	private long person;
-	
-	public ApplicationIndividualKey() {}
-	
+	private long indv_id;
+
+	public ApplicationIndividualKey() {
+	}
+
 	public ApplicationIndividualKey(String application, long person) {
-		this.application = application;
-		this.person = person;
+		this.app_num = application;
+		this.indv_id = person;
 	}
-	
-	public String getApplication() {
-		return application;
+
+	public String getApp_num() {
+		return app_num;
 	}
-	
-	public void setApplication(String application) {
-		this.application = application;
+
+	public void setApp_num(String application) {
+		this.app_num = application;
 	}
-	
-	public long getPerson() {
-		return person;
+
+	public long getIndv_id() {
+		return indv_id;
 	}
-	
-	public void setPerson(long person) {
-		this.person = person;
+
+	public void setIndv_id(long person) {
+		this.indv_id = person;
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(application, person);
+		return Objects.hash(app_num, indv_id);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -55,8 +56,7 @@ public class ApplicationIndividualKey implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		ApplicationIndividualKey other = (ApplicationIndividualKey) obj;
-		return Objects.equals(application, other.application) && Objects.equals(person, other.person);
+		return Objects.equals(app_num, other.app_num) && Objects.equals(indv_id, other.indv_id);
 	}
-	
-	
+
 }

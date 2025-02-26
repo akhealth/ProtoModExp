@@ -12,20 +12,20 @@ public class ApplicationIDGenerator implements IdentifierGenerator {
 
 	@Override
 	public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-	
+
 		String prefix = "T";
-		
+
 		return session.doReturningWork(connection -> {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("Select count(app_num) as Id from ar_application_for_aid");
-			
-			if(rs.next()) {
-				int id = rs.getInt(1)+1;
-				String generatedId = prefix + String.format("%08d",id);
+
+			if (rs.next()) {
+				int id = rs.getInt(1) + 1;
+				String generatedId = prefix + String.format("%08d", id);
 				return generatedId;
 			}
 			return null;
-			
+
 		});
 	}
 }

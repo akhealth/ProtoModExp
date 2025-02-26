@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<title>ARIES</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/uswds/dist/js/uswds-init.min.js"></script>
+    <link rel="stylesheet" href="/uswds/dist/css/uswds.min.css" />
+	<link href="/css/applicationsearch.css" rel="stylesheet" />
+
+</head>
+<div class="usa-overlay"></div>
+  <header class="usa-header usa-header--basic">
+    <div class="usa-nav-container">
+        <div class="usa-logo">
+			<div class="header-image">
+				<a href="/landingpage">
+					<img src="uswds\dist\img\usa-icons\grid_view.svg" alt="ARIES">
+				</a>
+			</div>
+        </div>
+		<nav class="usa-breadcrumb" aria-label="Breadcrumbs,,">
+			<ol class="usa-breadcrumb__list">
+				<li class="usa-breadcrumb__list-item">
+					<a href="/landingpage" class="usa-breadcrumb__link"><span>ARIES</span></a>
+				</li>
+				<li class="usa-breadcrumb__list-item usa-current" aria-current="page">
+					<span>Application Search</span>
+				</li>
+			</ol>
+		</nav>
+      <nav aria-label="Primary navigation," class="usa-nav">
+        <section aria-label="Search component">
+          <form class="usa-search usa-search--small" role="search">
+            <label class="usa-sr-only" for="search-field">Search</label>
+            <input
+              class="usa-input"
+              id="search-field"
+              type="search"
+              name="search"
+            />
+            <button class="usa-button" type="submit">
+              <img
+                src="/uswds/dist/img/usa-icons-bg/search--white.svg"
+                class="usa-search__submit-icon"
+                alt="Search"
+              />
+            </button>
+          </form>
+        </section>
+        <label for="logout" class="margin-x-1">Developer</label>
+     	<a href="/login"><button type="button" name="logout" class="usa-button">
+     		Logout</button></a>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content">
+	<div class="bg-base-lightest">
+	    <section class="grid-container usa-section">
+	      <div class="grid-row grid-gap">
+	        <div class="tablet:grid-col-3">
+				<form class="usa-form usa-form--large" action='/applicationsearch' method='POST'>
+				  <fieldset class="usa-fieldset">
+					<legend class="usa-legend usa-legend--large">Application Search</legend>
+				    <label class="usa-label" >First Name</label>
+				    <input class="usa-input" id="firstName" name="firstName"
+				    value ='{{#firstname}}{{firstname}}{{/firstname}}{{^firstname}}{{/firstname}}' type="text"/>
+					<label class="usa-label" >Last Name</label>
+					<input class="usa-input" id="lastName" name="lastName"
+					 value ='{{#lastname}}{{lastname}}{{/lastname}}{{^lastname}}{{/lastname}}' type="text"/>
+					<label class="usa-label">Application ID</label>
+					<input class="usa-input" id="applicationId" name="applicationId"
+					 value ='{{#applicationId}}{{applicationId}}{{/applicationId}}{{^applicationId}}{{/applicationId}}' type="text"/>				
+				  </fieldset>
+					<button type="submit" name ="submit" value="submit" 
+					class="usa-button">Submit</button>
+				</form>
+	        </div>
+	        <div class="tablet:grid-col-8 usa-prose">
+	      	</div>
+	      	<div class="results">
+				<br>
+					 <div class="tableView">
+					  <table class="usa-table">
+					    <thead>
+					      <tr>
+						    <th >Status Code</th>
+						    <th >Received Date</th>
+						    <th >Details Link</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+						{{#applications}}
+							<tr>
+								<td data-label="Status Code">
+									{{appStatusCode}}
+								</td>
+								<td data-label="Received Date">
+								{{receivedDate}}
+								</td>
+								<td data-label="DetailsLink">
+									<a href="/applicationdetails?appNum={{appNum}}">
+										<button type="submit" name="details" class="pure-button">Details</button></a>
+									</td>
+								</tr>
+						{{/applications}}
+						  
+					   </tbody>
+					  </table>
+					 </div>
+				</div>
+	    </section>
+	 </div>
+  </main>
+</html> 
